@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: kustomize-httpbin
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: httpbin
+        image: "mccutchen/go-httpbin:v2.1.1"
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http

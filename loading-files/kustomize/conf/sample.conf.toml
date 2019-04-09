@@ -1,0 +1,26 @@
+###############################
+# Debug with gops
+###############################
+[Debug]
+
+  # allow debugging with gops
+  enable = false
+
+  # start a gops agent on specified URL. Ex: localhost:9999
+  remoteDebugURL = ""
+
+###############################
+# Logs Settings
+###############################
+[Log]
+
+  # Log level: debug, info, warn, error, dpanic, panic, and fatal
+  level = "debug"
+
+  # OpenTracing compatible tracer
+  tracerURL = ""
+
+[Metrics]
+
+  # Enable metric scrapper endpoint for Prometheus
+  enable = true

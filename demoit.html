@@ -1,0 +1,262 @@
+<h2>Highway to <a href="https://helm.sh/" target="_blank">HELM</a> but <a href="https://kustomize.io/" target="_blank">Kustomize</a>d</h2>
+
+<h2>A <em>Kubernetes</em> templating story</h2>
+
+<div class="logos">
+    <img src="/images/helm_logo_transparent.png" />
+    <img src="/images/kubectl1.png" />
+</div>
+<div class="video">
+    <iframe width="30%" height="100%" src="https://www.youtube.com/embed/l482T0yNkeo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+<style>
+    .logos{
+        height: 30%;
+    }
+    .video{
+        height: 30%;
+    }
+</style>
+
+---
+
+<h1><em>Helm</em>, a package manager for kubernetes</h1>
+<div class="head-logo">
+    <img src="/images/helm_logo_transparent.png" />
+</div>
+
+<div class="split">
+    <div class="star">
+        <img src="/images/Kubernetes_logo.png" />
+        <img src="/images/logo-CNCF.png" />
+    </div>
+    <div class="blabla">
+        <h2>
+        <ul>
+            3 big concepts
+            <li>Chart</li>
+            <li>Repository</li>
+            <li>Release</li>
+        </ul>
+
+        <ul>
+            Charts use :
+            <li><a href="https://golang.org/pkg/text/template/" target="_blank">golang template</a></li>
+            <li><a href="https://godoc.org/github.com/Masterminds/sprig" target="_blank">sprig package</a></li>
+        </ul>
+        
+        </h2>
+    </div>
+</div>
+
+<style>
+    .blabla {
+        margin-top: 5%;
+        margin-left: 5%;
+        {{/* margin-right: 10%; */}}
+        width: 50%;
+    }
+
+    .star {
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 50%;
+    }
+
+    .star img {
+        display:table-cell;
+        margin-top: 20%;
+    }
+
+    .blabla ul {
+        text-align: left;
+    }
+</style>
+
+---
+
+<h1><em>Helm</em> - a chart</h1>
+<div class="head-logo">
+    <img src="/images/helm_logo_transparent.png" />
+</div>
+
+<div class="split">
+    <web-term path="helm-create"></web-term>
+    <source-code folder="helm-create"
+        files="sample.yaml templates/service.yaml templates/_helpers.tpl templates/tests/test-connection.yaml values.yaml"
+        start-lines="3,19;2;15;10;15"
+        end-lines="3,19;2;15;11;17">
+    </source-code>
+</div>
+
+---
+
+<h1><em>Helm</em> - the package and the repository</h1>
+<div class="head-logo">
+    <img src="/images/helm_logo_transparent.png" />
+</div>
+
+<div class="split">
+    <web-term path="helm-httpbin"></web-term>
+    <source-code folder="helm-httpbin"
+        files="Chart.yaml values.yaml templates/deployment.yaml"
+        start-lines="3;8;24"
+        end-lines="4;9;24">
+    </source-code>
+</div>
+
+---
+
+<h1><em>Helm</em> - dependency</h1>
+<div class="head-logo">
+    <img src="/images/helm_logo_transparent.png" />
+</div>
+
+<div class="split">
+    <web-term path="helm-dependency"></web-term>
+    <source-code folder="helm-dependency"
+        files="requirements.yaml"
+        start-lines=""
+        end-lines="">
+    </source-code>
+</div>
+
+---
+
+<h1><em>Helm</em> - release</h1>
+<div class="head-logo">
+    <img src="/images/helm_logo_transparent.png" />
+</div>
+
+<div class="split">
+    <web-term path=""></web-term>
+    <web-browser src="http://localhost:4242/"></web-browser>
+</div>
+
+---
+
+<h1><em>Kustomize</em>, Kubernetes native configuration management</h1>
+<div class="head-logo">
+    <img src="/images/kubectl1.png" />
+</div>
+
+<div class="split">
+    <div class="blabla">
+        <h2><ul>
+            <li>Kubernetes (1.14) now supports Kustomize!</li>
+            <li>Purely declarative approach to configuration customization</li>
+            <li>No in-cluster components</li>
+            <li>Every artifact that kustomize uses is plain YAML and can be validated and processed as such</li>
+        </ul></h2>
+    </div>
+</div>
+
+<style>
+    .blabla {
+        margin-top: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .blabla ul {
+        text-align: left;
+    }
+</style>
+
+---
+
+<h1><em>Kustomize</em> - demo</h1>
+<div class="head-logo">
+    <img src="/images/kubectl1.png" />
+</div>
+
+<div class="split">
+    <web-term path="kustomize-httpbin"></web-term>
+    <source-code folder="kustomize-httpbin"
+        files="base/kustomization.yaml base/deployment.yaml base/service.yaml"
+        start-lines="3;11;6"
+        end-lines="8;14;9">
+    </source-code>
+</div>
+
+---
+
+<h1><em>Kustomize</em> - deploy</h1>
+<div class="head-logo">
+    <img src="/images/kubectl1.png" />
+</div>
+
+<div class="split">
+    <web-term path="kustomize-httpbin"></web-term>
+    <web-browser src="http://localhost:4242/"></web-browser>
+</div>
+
+---
+
+<h1>Work with files</h1>
+<div class="head-logo">
+    <img src="/images/helm_logo_transparent.png" />
+    <img src="/images/kubectl1.png" />
+</div>
+
+<div class="split">
+    <web-term path="loading-files"></web-term>
+    <source-code folder="loading-files"
+        files="helm/templates/k8s.yaml kustomize/kustomization.yaml"
+        start-lines="2,6,9,14;4,10"
+        end-lines="2,6,9,14;8,16">
+    </source-code>
+</div>
+
+---
+
+<h1>Conclusion</h1>
+<div class="head-logo">
+    <img src="/images/helm_logo_transparent.png" />
+    <img src="/images/kubectl1.png" />
+</div>
+
+<div class="split">
+    <div class="blabla">
+        <h2>Helm
+        <ul>
+            <li class="bad">imperative</li>
+            <li class="bad">release management</li>
+            <li class="good">dependency management</li>
+            <li class="good">hook</li>
+        </ul></h2>
+    </div>
+    <div class="blabla">
+        <h2>Kustomize
+        <ul>    
+            <li class="good">declarative like kubernetes philosophy</li>
+            <li class="good">more easy to get in</li>
+            <li class="neutral">no release management</li>
+            <li class="good">plain validable yaml for each files</li>
+        </ul></h2>
+    </div>
+</div>
+
+<style>
+    .blabla {
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .blabla ul {
+        text-align: left;
+    }
+
+    .good {
+        color: green;
+    }
+    .bad {
+        color: red;
+    }
+    .neutral {
+        color: white;
+    }
+</style>
